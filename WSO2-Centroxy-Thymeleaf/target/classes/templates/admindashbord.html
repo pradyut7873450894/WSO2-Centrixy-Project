@@ -1,0 +1,504 @@
+<!-- 
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    Bootstrap CSS
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    Custom CSS
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container form {
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to Admin Dashboard</h1>
+
+<div class="mt-4 text-center">
+    <a href="/admin/adminbyuser" class="btn btn-success">Add User</a>
+    <a href="/groups/add" class="btn btn-info">Add Group</a>
+    <a href="/logout" class="btn btn-danger">Logout</a>
+</div>
+
+</body>
+</html>
+ -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centroxy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+<style>
+    /* CSS for the header and sidebar */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* Full height of the viewport */
+    }
+
+    .header {
+        display: flex; /* Display header content in a single line */
+        align-items: center; /* Align items vertically in the header */
+        background-color: #f0f0f0; /* Lighter background color */
+        color: #333; /* Darker text color */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header h1 {
+        margin: 0; /* Remove margin around the header text */
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        margin-right: 10px; /* Add space between the icon and text */
+        font-size: 24px; /* Increase font size for better visibility */
+        color: #333; /* Darker color for better visibility */
+    }
+
+    .menu-items {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu-item {
+        padding: 10px 20px;
+        background-color: #fff; /* Lighter background color */
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .menu-item a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+    
+        margin-top:111px; 
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff; /* Lighter background color */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #333;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        color: #333; /* Darker color for better visibility */
+    }
+
+    /* CSS for the three divs in the middle of the page */
+    .content {
+        flex: 1; /* Expand to fill the remaining space */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 20px; /* Add padding around the content */
+         flex-direction: rows;
+         margin-top: -12px; 
+    }
+
+    .content .box {
+        flex: 1; /* Each box takes up equal space */
+        padding: 20px;
+        background-color: #f0f0f0;
+        text-align: center;
+        border-radius: 20px; /* Make the divs curved */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        margin: 2px; /* Add gap between each div */
+        height: 300px; /* Increase height of the div */
+    }
+    
+    .box {
+    flex: 1; /* Equal height for all boxes */
+    background-color: lightblue;
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+}
+
+    /* Adjust content area when sidebar is open */
+    .content.sidebar-open {
+        margin-left: 250px; /* Same as sidebar width */
+    }
+    
+    
+    
+    .text {
+
+    margin-top:-10px; /* Reset margin for the text */
+    display: inline-block; /* Display the text as inline-block */
+    vertical-align: middle; /* Align the text vertically with the image */
+    
+    font-size: 20px;
+}
+    
+    
+    
+    
+     .heading {
+        flex: 1; /* Expand to fill the remaining space */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start; /* Change alignment to flex-start */
+        padding: 20px; /* Add padding around the content */
+        flex-direction: rows;
+        margin-top: 50px;
+        transition: margin-left 0.5s; /* Add transition for smoother animation */
+    }
+
+    .heading.sidebar-open {
+        margin-left: 250px; /* Same as sidebar width */
+    }
+    .heading.sidebar-open h1 {
+        margin-left: 250px;  
+    }
+    
+</style>
+</head>
+<body>
+
+<div class="header">
+    <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span> 
+     
+    <div class="image">
+                <img alt="" style="width: 100px; margin-top:20px; 
+                margin-left: 15px; height: 40px; background: #eaebed;" th:src="@{/img/wso2-logo-removebg-preview.jpg}">
+                  <p class="text">IDENTITY SERVER</p>
+            </div>
+</div>
+
+<div class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a> 
+    <ul class="menu-items">
+       <a href="/admin/adminbyuser" class="btn btn-success">Add User</a>
+    <a href="/groups/add" class="btn btn-info">Add Group</a>
+    <a href="/logout" class="btn btn-danger">Logout</a>
+    </ul>
+</div>
+<h1 class="heading" style="flex-direction: rows ; margin-top:20px;">Welcome [[${user.username}]]!</h1>
+
+
+<div class="content">
+
+    <div class="box" style="margin-right: 5px; height: 400px;">
+    
+        <h2>Manage users</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec turpis tellus.</p>
+            
+    </div>
+    <div class="box" style="margin: 0 5px; height: 400px;" >
+        <h2>Enhance app login</h2>
+        <p>Sed consequat, sem non mattis viverra, nibh lectus tempus ex, non tristique leo mi eget leo.</p>
+    </div>
+    <div class="box" style="margin-left: 5px; height: 400px;">
+        <h2>Manage apps</h2>
+        <p>Donec convallis, justo nec suscipit accumsan, tortor est tempus nunc, in lobortis nunc magna vel dolor.</p>
+    </div>
+</div>
+
+<script>
+    // Function to toggle the sidebar
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        var content = document.querySelector(".content");
+
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+            content.classList.remove("sidebar-open");
+        } else {
+            sidebar.style.width = "250px";
+            content.classList.add("sidebar-open");
+        }
+    }
+</script>
+
+</body>
+</html>
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- 
+  
+  <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centroxy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> Font Awesome
+<style>
+    /* CSS for the header and sidebar */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* Full height of the viewport */
+    }
+
+    .header {
+        display: flex; /* Display header content in a single line */
+        justify-content: space-between; /* Add space between items */
+        align-items: center; /* Align items vertically in the header */
+        background-color: #f0f0f0; /* Lighter background color */
+        color: #333; /* Darker text color */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        margin-right: 10px; /* Add space between the icon and text */
+        font-size: 24px; /* Increase font size for better visibility */
+        color: #333; /* Darker color for better visibility */
+    }
+
+    .menu-items {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu-item {
+        padding: 10px 20px;
+        background-color: #fff; /* Lighter background color */
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .menu-item a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+        margin-top: 111px;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff; /* Lighter background color */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #333;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        color: #333; /* Darker color for better visibility */
+    }
+
+    /* CSS for the three divs in the middle of the page */
+    .content {
+        flex: 1; /* Expand to fill the remaining space */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start; /* Change alignment to flex-start */
+        padding: 20px; /* Add padding around the content */
+        flex-direction: rows;
+        margin-top: 50px;
+        transition: margin-left 0.5s; /* Add transition for smoother animation */
+    }
+
+    .content.sidebar-open {
+        margin-left: 250px; /* Same as sidebar width */
+    }
+
+    .text {
+        margin-top: -10px; /* Reset margin for the text */
+        display: inline-block; /* Display the text as inline-block */
+        vertical-align: middle; /* Align the text vertically with the image */
+        font-size: 20px;
+    }
+
+    /* Adjust h1 alignment when sidebar is open */
+    .content.sidebar-open h1 {
+        margin-left: 250px; /* Same as sidebar width */
+    }
+
+    .box {
+        flex: 1; /* Equal height for all boxes */
+        background-color: lightblue;
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span> Three bars icon
+    <div class="image">
+        <img alt="" style="width: 100px; margin-top:20px; margin-left: 15px; height: 40px; background: #eaebed;" th:src="@{/img/wso2-logo.png}">
+        <p class="text">IDENTITY SERVER</p>
+    </div>
+</div>
+
+<div class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a> Close button icon
+    <ul class="menu-items">
+        <a href="/admin/adminbyuser" class="btn btn-success">Add User</a>
+        <a href="/groups/add" class="btn btn-info">Add Group</a>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+    </ul>
+</div>
+
+<h1 class="content">Welcome [[${user.username}]]!</h1> Moved inside the content
+
+<div class="content">
+    <div class="box" style="margin-right: 5px;">
+        <h2>Div 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec turpis tellus.</p>
+    </div>
+    <div class="box" style="margin: 0 5px;">
+        <h2>Div 2</h2>
+        <p>Sed consequat, sem non mattis viverra, nibh lectus tempus ex, non tristique leo mi eget leo.</p>
+    </div>
+    <div class="box" style="margin-left: 5px;">
+        <h2>Div 3</h2>
+        <p>Donec convallis, justo nec suscipit accumsan, tortor est tempus nunc, in lobortis nunc magna vel dolor.</p>
+    </div>
+</div>
+
+<script>
+    // Function to toggle the sidebar
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        var content = document.querySelector(".content");
+
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+            content.classList.remove("sidebar-open");
+        } else {
+            sidebar.style.width = "250px";
+            content.classList.add("sidebar-open");
+        }
+    }
+</script>
+
+</body>
+</html>
+  
+ 
+ 
+ 
+  -->
+ 
+ 
+ 
+ 

@@ -1,0 +1,1545 @@
+<!-- <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+/*===== VARIABLES CSS =====*/
+
+/*=== Colores ===*/
+:root{
+    --first-color: #12192C;
+    --text-color: #8590AD;
+}
+
+/*=== Fuente y tipografia ===*/
+:root{
+    --body-font: 'Roboto', sans-serif;
+    --big-font-size: 2rem;
+    --normal-font-size: 0.938rem;
+    --smaller-font-size: 0.875rem;
+}
+@media screen and (min-width: 768px){
+    :root{
+        --big-font-size: 2.5rem;
+        --normal-font-size: 1rem;
+    }  
+}
+
+/*===== BASE =====*/
+*,::before,::after{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: var(--body-font);
+    color: var(--first-color);
+}
+h1{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+/*===== FORM =====*/
+.l-form{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/*=== Shapes ===*/
+.shape1,
+.shape2{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.shape1{
+    top: -7rem;
+    left: -3.5rem;
+    background: linear-gradient(180deg, var(--first-color) 0%, rgba(196,196,196,0) 100%);
+}
+.shape2{
+    bottom: -6rem;
+    right: -5.5rem;
+    background: linear-gradient(180deg, var(--first-color) 0%, rgba(196,196,196,0) 100%);
+    transform: rotate(180deg);
+}
+/*=== Form ===*/
+.form{
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+.form__content{
+    width: 290px;
+}
+.form__img{
+    display: none;
+}
+.form__title{
+    font-size: var(--big-font-size);
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+.form__div{
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin-bottom: 1rem;
+    padding: .25rem 0;
+    border-bottom: 1px solid var(--text-color);
+}
+/*=== Div focus ===*/
+.form__div.focus{
+    border-bottom: 1px solid var(--first-color);
+}
+
+.form__div-one{
+    margin-bottom: 3rem;
+}
+
+.form__icon{
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: .3s;
+}
+/*=== Icon focus ===*/
+.form__div.focus .form__icon{
+    color: var(--first-color);
+}
+
+.form__label{
+    display: block;
+    position: absolute;
+    left: .75rem;
+    top: .25rem;
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    transition: .3s;
+}
+/*=== Label focus ===*/
+.form__div.focus .form__label{
+    top: -1.5rem;
+    font-size: .875rem;
+    color: var(--first-color);
+}
+
+.form__div-input{
+    position: relative;
+}
+.form__input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    padding: .5rem .75rem;
+    font-size: 1.2rem;
+    color: var(--first-color);
+    transition: .3s;
+}
+.form__forgot{
+    display: block;
+    text-align: right;
+    margin-bottom: 2rem;
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    font-weight: 500;
+    transition: .5;
+}
+.form__forgot:hover{
+    color: var(--first-color);
+    transition: .5s;
+}
+.form__button{
+    width: 100%;
+    padding: 1rem;
+    font-size: var(--normal-font-size);
+    outline: none;
+    border: none;
+    margin-bottom: 3rem;
+    background-color: var(--first-color);
+    color: #fff;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .3s;
+}
+.form__button:hover{
+    box-shadow: 0px 15px 36px rgba(0,0,0,.15);
+}
+
+/*=== Form social===*/
+.form__social{
+    text-align: center;
+}
+.form__social-text{
+    display: block;
+    font-size: var(--normal-font-size);
+    margin-bottom: 1rem;
+}
+.form__social-icon{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 1rem;
+    padding: .5rem;
+    background-color: var(--text-color);
+    color: #fff;
+    font-size: 1.25rem;
+    border-radius: 50%;
+}
+.form__social-icon:hover{
+    background-color: var(--first-color);
+}
+/*===== MEDIA QUERIS =====*/
+@media screen and (min-width: 968px){
+    .shape1{
+        width: 400px;
+        height: 400px;
+        top: -11rem;
+        left: -6.5rem;
+    }
+    .shape2{
+        width: 300px;
+        height: 300px;
+        right: -6.5rem;
+    }
+
+    .form{
+        grid-template-columns: 1.5fr 1fr;
+        padding: 0 2rem;
+    }
+    .form__content{
+        width: 320px;
+    }
+    .form__img{
+        display: block;
+        width: 700px;
+        justify-self: center;
+    }
+}
+
+
+
+
+
+/*=== Additional Styles for Custom Input ===*/
+.custom-input {
+    border: none; /* Remove default border */
+    border-radius: 0; /* Remove default border-radius */
+    background-color: transparent; /* Set background to transparent */
+    font-size: 1.1rem; /* Increase font size */
+    padding: 1rem; /* Add padding */
+    width: 100%; /* Ensure input takes full width */
+    border-bottom: 2px solid var(--text-color); /* Add bottom border */
+    transition: border-color 0.3s; /* Add transition for border-color */
+}
+
+.custom-input:focus {
+    border-bottom-color: var(--first-color); /* Change border color on focus */
+}
+
+
+
+
+
+
+.input-container {
+    position: relative;
+    display: flex; 
+    align-items: center;  
+}
+
+.image-container {
+    display: flex;  
+    align-items: center; 
+}
+
+ 
+.text {
+
+    margin-top:-35px; /* Reset margin for the text */
+    display: inline-block; /* Display the text as inline-block */
+    vertical-align: middle; /* Align the text vertically with the image */
+    
+    font-size: 25px;
+}
+
+
+ 
+
+
+
+
+
+
+.input-container .image {
+    position: absolute; /* Position image absolutely */
+    left: -550px; /* Adjust the distance to move the image to the left */
+    top: 50%; /* Align image vertically */
+    transform: translateY(-50%); /* Center image vertically */
+    
+     margin-left: -80px;
+}
+ 
+ 
+ 
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.input-container .image {
+
+   
+    /*margin-right: 150px; Adjust the margin as needed */
+}
+
+
+</style>
+</head>
+<body>
+        <div class="l-form">
+            <div class="shape1"></div>
+            <div class="shape2"></div>
+
+            <div class="form">
+                <img src="assets/img/authentication.svg" alt="" class="form__img">
+                
+
+                <form action="/login" method="post" class="form__content">
+                    <h1 class="form__title">Welcome</h1>
+ 
+                    
+                     <div th:if="${param.error}" class="alert alert-danger">
+            Invalid User and Password</div>
+
+          <div th:if="${param.logout}" class="alert alert-success">
+            Logout Successfully</div>
+                    
+                    
+                    
+                    
+                    <div class="container">
+    <div class="mb-3 input-container">
+        <div class="image-container-img1">
+            <div class="image">
+                <img alt="" style="width: 100px; margin-left: 75px; height: 70px; background: #eaebed;" th:src="@{/img/wso2-logo.png}">
+                  <p class="text">IDENTITY SERVER</p>
+            </div>
+           
+        </div>
+        <input type="text" name="username" class="form-control custom-input" placeholder="Username">
+    </div>
+    <div class="mb-3 input-container">
+        <div class="image-container">
+        <div class="image">
+        <br><br><br>
+                <img alt="" style="width: 450px; height: 80px; background: #eaebed;" th:src="@{/img/cen.png}">
+               
+            </div>
+           
+        
+                     </div>
+        <input type="password" name="password" class="form-control custom-input" placeholder="Password">
+    </div>
+</div>
+                    
+                    
+                    
+                    
+                    
+                    <div class="container">
+    <div class="mb-3 input-container">
+        <div class="image">
+            <img alt="" style=" width: 65px; height: 50px; background: #eaebed;" th:src="@{/img/wso2-logo.png}">
+        </div>
+         <div class="text-container">
+                <p class="text">IDENTITY SERVER</p>
+            </div>
+        <input type="text" name="username" class="form-control custom-input" placeholder="Username">
+    </div>
+    <div class="mb-3 input-container">
+        <div class="image">
+             
+        </div>
+        <input type="password" name="password" class="form-control custom-input" placeholder="Password">
+    </div>
+</div>
+                    
+                    
+                    
+            
+<br>
+              
+              
+              
+                    <a href="#" class="form__forgot">Forgot Password?</a>
+
+                    <input type="submit" class="form__button" value="Login">
+
+                    <div class="form__social">
+                        <span class="form__social-text"> login with</span>
+
+                        <a href="#" class="form__social-icon"><i class='bx bxl-facebook' ></i></a>
+                        <a href="#" class="form__social-icon"><i class='bx bxl-google' ></i></a>
+                        <a href="#" class="form__social-icon"><i class='bx bxl-instagram' ></i></a>
+                        
+                    </div>
+                    
+                </form>
+               
+            </div>
+
+        </div>
+        
+        ===== MAIN JS =====
+        <script src="assets/js/main.js"></script>
+    </body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <meta charset="UTF-8">
+  Corrected charset
+  <title>Insert title here</title>
+  
+  <style>
+  
+  
+
+
+.navbar {
+    /* position: sticky; */
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.navbar .nav{
+    position: relative;
+    padding: 20px;
+    display: flex !important;
+    font-size: 20px;
+    justify-content: space-between !important;
+}
+
+
+.small-image {
+  width: 50px;
+  height: auto; 
+}
+
+
+.navbar img{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.navbar a {
+    color: #333;
+    text-align: center;
+    /* padding: 14px 16px; */
+    text-decoration: none;
+    z-index: 1;
+    
+}
+
+
+.navbar a:hover {
+    background-color: #f5f5f5;
+}
+
+
+.navbar .icon {
+    font-size: 20px;
+    top: 0;
+    left: 10px;
+    z-index: 2;
+}
+
+
+.navbar a:first-child {
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    /* margin-left: 20px; */
+}
+
+
+.menu-container {
+position: fixed;
+top: 77px;
+
+width: 250px; 
+height: 100%;
+color: #333;
+background-color: #e9e9e9;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+transition: left 0.3s;
+z-index: 2;
+display: flex;
+flex-direction: column;
+padding-top: 30px;
+}
+
+.menu-container a {
+    color: #000000;
+    display: block;
+    padding: 20px;
+    font-size: 20px;
+    text-decoration: none;
+    
+}
+.nav-right{
+
+   text-align: center;
+  margin-right: 10px;
+  display: flex;
+    justify-content: space-between !important;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: none;
+}
+
+
+#close-icon {
+font-size: 20px; 
+margin-left: 20px;
+}
+.menu-container i{
+margin-right: 15px;
+margin-top: 15px;
+}
+
+
+
+/* 
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown-content a:hover {
+background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+.dropbtn {
+background-color: transparent;
+color: black;
+padding: 14px 16px;
+font-size: 16px;
+border: none;
+cursor: pointer;
+}
+*/
+
+
+
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+width: 100%;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+z-index: 1;
+top: 100%; /* Position dropdown below the button */
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown-content a:hover {
+background-color: #f1f1f1;
+}
+
+.dropbtn {
+background-color: transparent;
+color: black;
+padding: 14px 16px;
+font-size: 16px;
+border: none;
+cursor: pointer;
+}
+
+.dropbtn i {
+margin-left: 5px;
+}
+  
+  </style>
+</head>
+<body> 
+<div class="navbar">
+  <div class="nav">
+    <div class="nav-left">
+      <i class="fa fa-bars icon" id="menu-icon" (click)="toggleMenu()"></i>
+      <img src="assets/nav.png">
+      <a href="#console">Console</a>
+    </div>
+    <div class="nav-right">
+      <img src="assets/nasa.png" class="small-image">
+      <a href="#console">debadutta</a>
+    </div>
+  </div>
+   
+  </div>
+
+  
+<div class="menu-container" id="menu-container" [style.left]="isMenuOpen ? '0' : '-250px'">
+  <a ><i class="far fa-user"></i>Home</a>
+  <div class="dropdown">
+    <button class="dropbtn" (click)="toggleDropdown()">
+      <i class="far fa-user"></i>User Management<i class="fas fa-caret-down"></i> 
+    </button>
+    <div class="#" [style.display]="isDropdownOpen ? 'block' : 'none'">
+      <a routerLink="/user">User</a>
+      <a routerLink="/group">Groups</a>
+      <a href="#">Roles</a>
+    </div>
+  </div>
+  <a routerLink="/login"><i class="far fa-user"></i>Logout</a>
+</div>
+
+<div class="overlay" id="overlay" *ngIf="isMenuOpen" (click)="toggleMenu()"></div>
+
+
+
+
+
+
+</body>
+</html>
+ -->
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- 
+  
+  
+  
+  
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centroxy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> Font Awesome
+<style>
+    /* CSS for the header and sidebar */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .header {
+        display: flex; /* Display header content in a single line */
+        align-items: center; /* Align items vertically in the header */
+        background-color: #f0f0f0; /* Lighter background color */
+        color: #333; /* Darker text color */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header h1 {
+        margin: 0; /* Remove margin around the header text */
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        margin-right: 10px; /* Add space between the icon and text */
+        font-size: 24px; /* Increase font size for better visibility */
+        color: #333; /* Darker color for better visibility */
+    }
+
+    .menu-items {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu-item {
+        padding: 10px 20px;
+        background-color: #fff; /* Lighter background color */
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .menu-item a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+    margin-top:75px;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff; /* Lighter background color */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #333;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        color: #333; /* Darker color for better visibility */
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <span class="menu-toggle" onclick="openSidebar()">&#9776;</span> Three bars icon
+    <h1>Centroxy</h1>
+</div>
+
+<div class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" onclick="closeSidebar()">&times;</a> Close button icon
+    <ul class="menu-items">
+        <a href="/admin/adminbyuser" class="btn btn-success">Add User</a>
+    <a href="/groups/add" class="btn btn-info">Add Group</a>
+    <a href="/logout" class="btn btn-danger">Logout</a>
+    </ul>
+</div>
+
+<script>
+    // Function to open the sidebar
+    function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+    }
+
+    // Function to close the sidebar
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+    }
+</script>
+
+</body>
+</html>
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centroxy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> Font Awesome
+<style>
+    /* CSS for the header and sidebar */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* Full height of the viewport */
+    }
+
+    .header {
+        display: flex; /* Display header content in a single line */
+        align-items: center; /* Align items vertically in the header */
+        background-color: #f0f0f0; /* Lighter background color */
+        color: #333; /* Darker text color */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header h1 {
+        margin: 0; /* Remove margin around the header text */
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        margin-right: 10px; /* Add space between the icon and text */
+        font-size: 24px; /* Increase font size for better visibility */
+        color: #333; /* Darker color for better visibility */
+    }
+
+    .menu-items {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu-item {
+        padding: 10px 20px;
+        background-color: #fff; /* Lighter background color */
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .menu-item a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff; /* Lighter background color */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #333;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        color: #333; /* Darker color for better visibility */
+    }
+
+    /* CSS for the three divs in the middle of the page */
+    .content {
+        flex: 1; /* Expand to fill the remaining space */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: margin-left 0.5s; /* Add transition for smoother effect */
+    }
+
+    .content .box {
+        width: 300px;
+        padding: 20px;
+        background-color: #f0f0f0;
+        text-align: center;
+    }
+
+    /* Adjust content area when sidebar is open */
+    .content.sidebar-open {
+        margin-left: 250px; /* Same as sidebar width */
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span> Three bars icon
+    <h1>Centroxy</h1>
+</div>
+
+<div class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a> Close button icon
+    <ul class="menu-items">
+        <li class="menu-item"><a href="#">Home</a></li>
+        <li class="menu-item"><a href="#">User</a></li>
+        <li class="menu-item"><a href="#">Logout</a></li>
+    </ul>
+</div>
+
+<div class="content">
+    <div class="box">
+        <h2>Div 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec turpis tellus.</p>
+    </div>
+    <div class="box">
+        <h2>Div 2</h2>
+        <p>Sed consequat, sem non mattis viverra, nibh lectus tempus ex, non tristique leo mi eget leo.</p>
+    </div>
+    <div class="box">
+        <h2>Div 3</h2>
+        <p>Donec convallis, justo nec suscipit accumsan, tortor est tempus nunc, in lobortis nunc magna vel dolor.</p>
+    </div>
+</div>
+
+<script>
+    // Function to toggle the sidebar
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        var content = document.querySelector(".content");
+
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+            content.classList.remove("sidebar-open");
+        } else {
+            sidebar.style.width = "250px";
+            content.classList.add("sidebar-open");
+        }
+    }
+</script>
+
+</body>
+</html>
+
+   -->
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <!-- 
+   
+   
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centroxy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> Font Awesome
+<style>
+    /* CSS for the header and sidebar */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* Full height of the viewport */
+    }
+
+    .header {
+        display: flex; /* Display header content in a single line */
+        align-items: center; /* Align items vertically in the header */
+        background-color: #f0f0f0; /* Lighter background color */
+        color: #333; /* Darker text color */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header h1 {
+        margin: 0; /* Remove margin around the header text */
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        margin-right: 10px; /* Add space between the icon and text */
+        font-size: 24px; /* Increase font size for better visibility */
+        color: #333; /* Darker color for better visibility */
+    }
+
+    .menu-items {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu-item {
+        padding: 10px 20px;
+        background-color: #fff; /* Lighter background color */
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .menu-item a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+    
+        margin-top:111px; 
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff; /* Lighter background color */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #333;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        color: #333; /* Darker color for better visibility */
+    }
+
+    /* CSS for the three divs in the middle of the page */
+    .content {
+        flex: 1; /* Expand to fill the remaining space */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 20px; /* Add padding around the content */
+    }
+
+    .content .box {
+        flex: 1; /* Each box takes up equal space */
+        padding: 20px;
+        background-color: #f0f0f0;
+        text-align: center;
+        border-radius: 20px; /* Make the divs curved */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        margin: 2px; /* Add gap between each div */
+        height: 300px; /* Increase height of the div */
+    }
+
+    /* Adjust content area when sidebar is open */
+    .content.sidebar-open {
+        margin-left: 250px; /* Same as sidebar width */
+    }
+    
+    
+    
+    .text {
+
+    margin-top:-10px; /* Reset margin for the text */
+    display: inline-block; /* Display the text as inline-block */
+    vertical-align: middle; /* Align the text vertically with the image */
+    
+    font-size: 20px;
+}
+    
+</style>
+</head>
+<body>
+
+<div class="header">
+    <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span> Three bars icon
+    <h1>Centroxy</h1>
+    <div class="image">
+                <img alt="" style="width: 100px; margin-top:20px; margin-left: 15px; height: 40px; background: #eaebed;" th:src="@{/img/wso2-logo.png}">
+                  <p class="text">IDENTITY SERVER</p>
+            </div>
+</div>
+
+<div class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a> Close button icon
+    <ul class="menu-items">
+       <a href="/admin/adminbyuser" class="btn btn-success">Add User</a>
+    <a href="/groups/add" class="btn btn-info">Add Group</a>
+    <a href="/logout" class="btn btn-danger">Logout</a>
+    </ul>
+</div>
+
+<div class="content">
+    <div class="box" style="margin-right: 5px; height: 400px;">
+        <h2>Div 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec turpis tellus.</p>
+    </div>
+    <div class="box" style="margin: 0 5px; height: 400px;" >
+        <h2>Div 2</h2>
+        <p>Sed consequat, sem non mattis viverra, nibh lectus tempus ex, non tristique leo mi eget leo.</p>
+    </div>
+    <div class="box" style="margin-left: 5px; height: 400px;">
+        <h2>Div 3</h2>
+        <p>Donec convallis, justo nec suscipit accumsan, tortor est tempus nunc, in lobortis nunc magna vel dolor.</p>
+    </div>
+</div>
+
+<script>
+    // Function to toggle the sidebar
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        var content = document.querySelector(".content");
+
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+            content.classList.remove("sidebar-open");
+        } else {
+            sidebar.style.width = "250px";
+            content.classList.add("sidebar-open");
+        }
+    }
+</script>
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centroxy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+<style>
+    /* CSS for the header and sidebar */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* Full height of the viewport */
+    }
+
+    .header {
+        display: flex; /* Display header content in a single line */
+        align-items: center; /* Align items vertically in the header */
+        background-color: #f0f0f0; /* Lighter background color */
+        color: #333; /* Darker text color */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header h1 {
+        margin: 0; /* Remove margin around the header text */
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        margin-right: 10px; /* Add space between the icon and text */
+        font-size: 24px; /* Increase font size for better visibility */
+        color: #333; /* Darker color for better visibility */
+    }
+
+    .menu-items {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu-item {
+        padding: 10px 20px;
+        background-color: #fff; /* Lighter background color */
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .menu-item a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+        margin-top: 111px; 
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff; /* Lighter background color */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #333;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #f0f0f0; /* Lighter hover background color */
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        color: #333; /* Darker color for better visibility */
+    }
+
+    /* CSS for the three divs in the middle of the page */
+    .content {
+        flex: 1; /* Expand to fill the remaining space */
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: flex-start; /* Align items at the top */
+        padding: 20px; /* Add padding around the content */
+    }
+
+    .content .box {
+        flex: 1; /* Each box takes up equal space */
+        padding: 20px;
+        background-color: #f0f0f0;
+        text-align: center;
+        border-radius: 20px; /* Make the divs curved */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+        margin: 2px; /* Add gap between each div */
+        height: 200px; /* Reduce height of the div */
+    }
+
+    /* Adjust content area when sidebar is open */
+    .content.sidebar-open {
+        margin-left: 250px; /* Same as sidebar width */
+    }
+    
+    .text {
+        margin-top: -10px; /* Reset margin for the text */
+        display: inline-block; /* Display the text as inline-block */
+        vertical-align: middle; /* Align the text vertically with the image */
+        font-size: 20px;
+    }
+    
+    .box-horizontal {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .box-vertical {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Style for Div 1 */
+    .div1 {
+        background-color: black; /* Black background color */
+       /*  color: white;  *//* White text color */
+        height: -50px; /* Reduced height */
+        padding: 20px; /* Padding */
+        border-radius: 20px; /* Rounded corners */
+        margin-bottom: 20px; /* Space below */
+    }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span> <!-- Three bars icon -->
+    <!-- <h1>Centroxy</h1> -->
+    <div class="image">
+        <img alt="" style="width: 100px; margin-top:20px; margin-left: 15px; height: 40px; background: #eaebed;" th:src="@{/img/wso2-logo.png}">
+        <p class="text">IDENTITY SERVER</p>
+    </div>
+</div>
+
+<div class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a> <!-- Close button icon -->
+    <ul class="menu-items">
+        <li><a href="/admin/adminbyuser" class="btn btn-success">Add User</a></li>
+        <li><a href="/groups/add" class="btn btn-info">Add Group</a></li>
+        <li><a href="/logout" class="btn btn-danger">Logout</a></li>
+    </ul>
+</div>
+<h2 class="myH1">Hello Data</h2>
+<div class="content">
+<!--     <div class="box box-vertical div1"> -->
+        <h2 class="box box-vertical div1">Div 1</h2>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec turpis tellus.</p> -->
+    </div>
+<!-- </div> -->
+
+<div class="content box-horizontal">
+    <div class="box" style="margin-right: 5px;">
+        <h2>Div 2</h2>
+        <p>Sed consequat, sem non mattis viverra, nibh lectus tempus ex, non tristique leo mi eget leo.</p>
+    </div>
+    <div class="box" style="margin-right: 5px;">
+        <h2>Div 3</h2>
+        <p>Donec convallis, justo nec suscipit accumsan, tortor est tempus nunc, in lobortis nunc magna vel dolor.</p>
+    </div>
+    <div class="box">
+        <h2>Div 4</h2>
+        <p>Content for Div 4</p>
+    </div>
+</div>
+
+<script>
+    // Function to toggle the sidebar
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        var content = document.querySelectorAll(".content");
+        var h2 = document.querySelectorAll("myH1");
+
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+            content.forEach((item) => {
+                item.classList.remove("sidebar-open");
+            });
+        } else {
+            sidebar.style.width = "250px";
+            content.forEach((item) => {
+                item.classList.add("sidebar-open");
+            });
+        }
+    }
+</script>
+ 
+</body>
+</html>
+
+ 

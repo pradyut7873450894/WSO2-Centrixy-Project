@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>User Registration</title>
+	<!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+		  crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+	<div class="row justify-content-center mt-5">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header text-center">
+					<h2>User Registration</h2>
+				</div>
+				<div class="card-body">
+					<form action="/createUser" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" class="form-control" id="userName" name="username" required>
+						</div>
+						<div class="form-group">
+							<label for="firstName">First Name</label>
+							<input type="text" class="form-control" id="firstName" name="firstName" required>
+						</div>
+						<div class="form-group">
+							<label for="lastName">Last Name</label>
+							<input type="text" class="form-control" id="lastName" name="lastName" required>
+						</div>
+						<div class="form-group">
+							<label for="country">Country</label>
+							<input type="text" class="form-control" id="country" name="country" required>
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" class="form-control" id="email" name="email" required>
+						</div>
+						<div class="form-group">
+							<label for="mobile">Mobile</label>
+							<input type="text" class="form-control" id="mobile" name="mobile" required>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" name="password" required>
+						</div>
+						<div class="form-group">
+							<label for="role">Role</label>
+							<select class="form-control" id="role" name="role" required>
+								<option value="ROLE_ADMIN">Admin</option>
+								<option value="ROLE_USER">User</option>
+							</select>
+						</div>
+
+						<label for="group">Group:</label>
+						<select id="group" name="group.id">
+							<option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}"></option>
+						</select>
+
+
+						<div class="form-group">
+							<label for="image">Image</label>
+							<input type="file" class="form-control-file" id="image" name="imageFile">
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">Register</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Include Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+		integrity="sha384-3KJ3ibDyA07M46nYpJMA7R2kv6tK9lBnxFtf+OdOQIfS3+VzQQdsOMGTFqqP1cZh"
+		crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8shCzgDkxyLxy3g+0n0vc+Skq5B5B2+rQvEHwN"
+		crossorigin="anonymous"></script>
+</body>
+</html>
